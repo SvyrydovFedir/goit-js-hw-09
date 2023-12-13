@@ -9,14 +9,12 @@ function formHandler(event) {
 
   const { delay, step, amount } = event.currentTarget.elements;
 
-  setTimeout(() => {
-    for (let i = 0; i < +amount.value; i++) {
-      const ascendantDelay = +step.value * i;
-      createPromise(i + 1, ascendantDelay)
-        .then(data => Notiflix.Notify.success(data))
-        .catch(error => Notiflix.Notify.failure(error));
-    }
-  }, +delay.value);
+  for (let i = 0; i < +amount.value; i++) {
+    const ascendantDelay = i * +step.value + +delay.value;
+    createPromise(i + 1, ascendantDelay)
+      .then(data => Notiflix.Notify.success(data))
+      .catch(error => Notiflix.Notify.failure(error));
+  }
 }
 
 function createPromise(position, delay) {

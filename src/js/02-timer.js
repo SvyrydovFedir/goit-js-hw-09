@@ -17,9 +17,16 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    console.log(selectedDates[0]);
+    const currentDate = new Date();
+
+    if (currentDate < selectedDates[0]) {
+      refs.start_btn.disabled = false;
+    } else {
+    }
   },
 };
+
+let countdownInterval;
 
 flatpickr(refs.dateTimePicker, options);
 
@@ -39,7 +46,11 @@ function formHandler() {
 }
 
 function startCountdown(endDate) {
-  const countdownInterval = setInterval(() => {
+  if (countdownInterval) {
+    clearInterval(countdownInterval);
+  }
+
+  countdownInterval = setInterval(() => {
     const currentTime = new Date();
     const timeDifference = endDate - currentTime;
 
