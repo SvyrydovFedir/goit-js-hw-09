@@ -17,11 +17,10 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    const currentDate = new Date();
-
-    if (currentDate < selectedDates[0]) {
+    if (this.defaultDate < selectedDates[0]) {
       refs.start_btn.disabled = false;
-    } else {
+    } else if (this.defaultDate > selectedDates[0]) {
+      refs.start_btn.removeAttribute('disabled');
     }
   },
 };
@@ -41,7 +40,6 @@ function formHandler() {
     refs.start_btn.disabled = true;
   } else {
     Notiflix.Notify.failure('Please choose a date in the future');
-    refs.start_btn.removeAttribute('disabled');
   }
 }
 
