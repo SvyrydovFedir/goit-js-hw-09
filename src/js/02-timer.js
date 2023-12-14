@@ -17,10 +17,8 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    if (this.defaultDate < selectedDates[0]) {
+    if (defaultDate < selectedDates[0]) {
       refs.start_btn.disabled = false;
-    } else if (this.defaultDate >= selectedDates[0]) {
-      refs.start_btn.removeAttribute('disabled');
     }
   },
 };
