@@ -26,7 +26,6 @@ const options = {
 };
 
 let countdownInterval;
-
 flatpickr(refs.dateTimePicker, options);
 
 refs.start_btn.addEventListener('click', formHandler);
